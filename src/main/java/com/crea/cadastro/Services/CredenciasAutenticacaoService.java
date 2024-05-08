@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.Services;
 import javax.naming.AuthenticationException;
 import com.crea.cadastro..Repositorys.CadastroProfissionaisRepository;
 
