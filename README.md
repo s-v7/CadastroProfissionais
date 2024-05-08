@@ -12,6 +12,12 @@
 ### Configuração do Ambiente de Desenvolvimento e Instruções de como rodar o projeto localmente
 Certifique-se de ter o JDK (Java Development Kit) Java e o Apache Maven instalados em sua máquina antes de prosseguir.  
 Utilizei JUnit como framework de teste e o Mockito para criar mocks e simular o comportamento!
+
+#### Estrutura do Projeto:
+- **src/main/java/com/crea/cadastro Contém o código-fonte do projeto.**
+- **src/main/sql Contém scripts sql.**
+- **test/java/com/crea/cadastro: Contém os testes unitários escritos com JUnit e Mockito.**
+
 #### Clone o repositório para o seu ambiente local:
 ```bash
 git clone https://github.com/s-v7/CadastroProfissionais
