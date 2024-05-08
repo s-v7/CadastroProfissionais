@@ -7,6 +7,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.crea.cadastro.Models.CadastroProfissionais;
+import com.crea.cadastro.Controllers.CadastroProfissionaisController;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
 
 import java.util.ArrayList;
 import java.util.List;
