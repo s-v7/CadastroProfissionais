@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  description: Documentação da API de cadastro de profissionais CREA/PI
+  version: '1.0.0'
+  title: Cadastro de Profissionais API
+basePath: /api/cadastro
+schemes:
+  - http
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      summary: Buscar todos os Profissionais Cadastrados
+      description: Retorna uma lista de todos os profissionais cadastrados no sistema.
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CadastroProfissionais'
+    post:
+      summary: Cadastrar Novo Profissional
+      description: Cadastra um novo profissional no sistema.
+      parameters:
+        - in: body
+          name: body
+          description: Novo Profissional
+          required: true
+          schema:
+            $ref: '#/definitions/CadastroProfissionais'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/CadastroProfissionais'
+  /{id}:
+    get:
+      summary: Buscar um Profissional Cadastrado
+      description: Retorna um profissional com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID do Profissional
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CadastroProfissionais'
+    put:
+      summary: Atualizar um Profissional Cadastrado
+      description: Atualiza as informações de um profissional existente.
+      parameters:
+        - in: path
+          name: id
+          description: ID do Profissional
+          required: true
+          type: integer
+        - in: body
+          name: body
+          description: Profissional Atualizado
+          required: true
+          schema:
+            $ref: '#/definitions/CadastroProfissionais'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CadastroProfissionais'
+    delete:
+      summary: Deletar um Profissional Cadastrado
+      description: Exclui um profissional do sistema com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID do Profissional
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+definitions:
+  CadastroProfissionais:
+    type: object
+    properties:
+      id:
+        type: integer
+      tipoCadastro:
+        type: string
+      nome:
+        type: string
+      cpf:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      dataNascimento:
+        type: string
+        format: date
+      telefone:
+        type: string
+      titulos:
+        type: string
+
+

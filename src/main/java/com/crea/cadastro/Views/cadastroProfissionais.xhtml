@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Cadastro de Profissionais</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="cadastroForm">
+            <p:growl id="cadastro" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+            <h5 class="mt-0">Cadastro Profissionais CREA/PI</h5>
+
+            <div class="formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel value="Tipo de Cadastro (VISTO ou REGISTRO)" for="tipoCadastro"/>
+                    <p:autoComplete id="tipoCadastro" value="#{cadastroProfissionaisBean.novoProfissional.tipoCadastro}" scrollHeight="225"/>
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="nome" value="Nome" />
+                    <p:inputText id="nome" value="#{cadastroProfissionaisBean.novoProfissional.nome}" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="cpf" value="CPF" />
+                    <p:inputMask id="cpf" value="#cadastroProfissionaisBean.novoProfissional.cpf}" mask="999.999.999-99" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="email" value="E-mail" />
+                    <p:inputText id="email" value="#{cadastroProfissionaisBean.novoProfissional.email}" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="senha" value="Senha" />
+                    <p:password id="senha" value="#{cadastroProfissionaisBean.novoProfissional.password}" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="dataNascimento" value="Data de Nascimento" />
+                    <p:calendar id="dataNascimento" value="#{cadastroProfissionaisBean.novoProfissional.dataNascimento}" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="telefone" value="Telefone/Celular" />
+                    <p:inputMask id="telefone" value="#{cadastroProfissionaisBean.novoProfissional.telefone}" mask="(99) 99999-9999" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="titulos" value="Títulos" />
+                    <p:inputText id="titulos" value="#{cadastroProfissionaisBean.novoProfissional.titulos}" />
+                </div>
+
+            </div>
+
+            <p:commandButton value="Cadastrar" action="#{cadastroProfissionaisBean.cadastrarProfissional}" />
+        </h:form>
+    </h:body>
+</html>
+

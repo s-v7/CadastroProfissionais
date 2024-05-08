@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>Listagem Cadastro de Profissionais</title>
+    </h:head>
+
+    <h:body>
+        <div class="card crud-demo">
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true" />
+
+                <p:dataTable id="listagem" widgetVar="dtListagem" var="profissional" value="#{cadastroProfissionaisListagemBean.profissionais}"
+                             reflow="true" styleClass="listagem-table" paginator="true" rows="10" paginatorPosition="bottom">
+
+                    <f:facet name="header">
+                        <div class="listagem-table-header">
+                            <span style="font-weight: bold">Profissionais Cadastrados</span>
+                            <span class="filter-container ui-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <p:inputText id="globalFilter" onkeyup="PF('dtListagem').filter()" placeholder="Search" />
+                            </span>
+                        </div>
+                    </f:facet>
+
+                    <p:column headerText="Tipo de Cadastro">
+                        <h:outputText value="#{profissional.tipoCadastro}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{profissional.nome}" />
+                    </p:column>
+
+                    <p:column headerText="CPF">
+                        <h:outputText value="#{profissional.cpf}" />
+                    </p:column>
+
+                    <p:column headerText="E-mail">
+                        <h:outputText value="#{profissional.email}" />
+                    </p:column>
+
+                    <p:column headerText="Senha">
+                        <h:outputText value="#{profissional.password}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Nascimento">
+                        <h:outputText value="#{profissional.dataNascimento}" />
+                    </p:column>
+
+                    <p:column headerText="Telefone/Celular">
+                        <h:outputText value="#{profissional.telefone}" />
+                    </p:column>
+
+                    <p:column headerText="Títulos">
+                        <h:outputText value="#{profissional.titulos}" />
+                    </p:column>
+
+                    <!-- Botões para detalhes e exclusão -->
+                    <p:column>
+                        <p:commandButton icon="pi pi-search" update=":dialogs:manage-cadastro-content"
+                                         oncomplete="PF('manageCadastroDialog').show()"
+                                         styleClass="edit-button rounded-button ui-button-success" process="@this">
+                            <f:setPropertyActionListener value="#{profissional}" target="#{cadastroProfissionaisListagemBean.selectProfissional}" />
+                            <p:resetInput target=":dialogs:manage-cadastro-content" />
+                        </p:commandButton>
+
+                        <p:commandButton icon="pi pi-trash" oncomplete="PF('deleteCadastroDialog').show()"
+                                         styleClass="ui-button-warning rounded-button">
+                            <f:setPropertyActionListener value="#{profissional}" target="#{cadastroProfissionaisListagemBean.selectProfissional}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+
+        <!-- Diálogo para exibir detalhes do profissional -->
+        <p:dialog id="manageCadastroDialog" header="Informações Sobre Profissional" showEffect="fade" modal="true"
+                  widgetVar="manageCadastroDialog" responsive="true">
+            <h:form id="dialogs">
+                <p:outputPanel id="manage-cadastro-content" class="ui-fluid">
+                    <p:panelGrid columns="2" columnClasses="label, value">
+                        <p:outputLabel for="tipo-cadastro" value="Tipo de Cadastro" />
+                        <p:outputText id="tipo-cadastro" value="#{cadastroProfissionaisListagemBean.selectProfissional.tipoCadastro}" />
+
+                        <p:outputLabel for="nome" value="Nome" />
+                        <p:outputText id="nome" value="#{cadastroProfissionaisListagemBean.selectProfissional.nome}" />
+
+                        <p:outputLabel for="cpf" value="CPF" />
+                        <p:outputText id="cpf" value="#{cadastroProfissionaisListagemBean.selectProfissional.cpf}" />
+
+                        <p:outputLabel for="email" value="E-mail" />
+                        <p:outputText id="email" value="#{cadastroProfissionaisListagemBean.selectProfissional.email}" />
+
+                        <p:outputLabel for="senha" value="Senha" />
+                        <p:outputText id="senha" value="#{cadastroProfissionaisListagemBean.selectProfissional.password}" />
+
+                        <p:outputLabel for="data-nascimento" value="Data de Nascimento" />
+                        <p:outputText id="data-nascimento" value="#{cadastroProfissionaisListagemBean.selectProfissional.dataNascimento}" />
+
+                        <p:outputLabel for="telefone" value="Telefone/Celular" />
+                        <p:outputText id="telefone" value="#{cadastroProfissionaisListagemBean.selectProfissional.telefone}" />
+
+                        <p:outputLabel for="titulos" value="Títulos" />
+                        <p:outputText id="titulos" value="#{cadastroProfissionaisListagemBean.selectProfissional.titulos}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Close" icon="pi pi-times" onclick="PF('manageCadastroDialog').hide()"
+                                     class="ui-button-secondary" type="button" />
+                </f:facet>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Registrar/Visar" icon="pi pi-check" actionListener="#{cadastroProfissionaisListagemBean.saveProfissional}"
+                                     update=":manage-cadastro-content" process="@this" />
+
+                    <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageCadastroDialog').hide()"
+                                     class="ui-button-secondary" type="button" />
+                </f:facet>
+                <p:confirmDialog widgetVar="deleteProfissionalDialog" showEffect="fade" width="300" 
+                                 message="Deletar Profissional?" header="Confirm" severity="warn">
+
+                    <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{cadastroProfissionaisListagemBean.deleteProfissional}"
+                                     process="@this" update=":form:delete-products-button" oncomplete="PF('deleteProfissionalDialog').hide()" />
+
+                    <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times" 
+                                     onclick="PF('deleteProfissionalDialog').hide()" />
+                </p:confirmDialog>
+
+                <p:confirmDialog global="true" showEffect="fade" width="300">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
+                                     icon="pi pi-times" />
+                </p:confirmDialog>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
