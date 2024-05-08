@@ -9,6 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.crea.cadastro.Models.CadastroProfissionais;
+import com.crea.cadastro.Repositorys.CadastroProfissionaisRepository;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class CadastroProfissionaisServiceTest {
 
