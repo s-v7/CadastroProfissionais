@@ -1,10 +1,14 @@
-
+package com.crea.cadastro;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
+import com.crea.cadastro.Models.CadastroProfissionais;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
+import com.crea.cadastro.ManagedBean.CadastroProfissionaisBean;
+
 
 public class CadastroProfissionaisBeanTest {
 
