@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.ManagedBean;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
