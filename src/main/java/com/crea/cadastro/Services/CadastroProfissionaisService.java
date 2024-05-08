@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.Services;
 import java.time.Period;
 import java.time.LocalDate;
 import javax.validation.Valid;
@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.crea.cadastro..Repositorys.CadastroProfissionaisRepository;
+import com.crea.cadastro.Models.CadastroProfissionais;
+
 
 @Service
 public class CadastroProfissionaisService {
