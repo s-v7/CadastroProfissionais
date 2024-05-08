@@ -6,10 +6,12 @@
 - **Spring Boot**
 - **JSF (JavaServer Faces) com PrimeFaces**
 - **PostgreSQL**
+- **JUnit**
+- **Mockito**
 
 ### Configuração do Ambiente de Desenvolvimento e Instruções de como rodar o projeto localmente
-Certifique-se de ter o JDK (Java Development Kit) Java e o Apache Maven instalados em sua máquina antes de prosseguir.
-
+Certifique-se de ter o JDK (Java Development Kit) Java e o Apache Maven instalados em sua máquina antes de prosseguir.  
+Utilizei JUnit como framework de teste e o Mockito para criar mocks e simular o comportamento!
 #### Clone o repositório para o seu ambiente local:
 ```bash
 git clone https://github.com/s-v7/CadastroProfissionais
