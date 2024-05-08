@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.ManagedBean;
 import javax.inject.Named;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
