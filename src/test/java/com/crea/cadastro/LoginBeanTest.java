@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import com.crea.cadastro.ManagedBean.LoginBean;
 
 public class LoginBeanTest {
 
