@@ -8,6 +8,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.List;
+import com.crea.cadastro.Models.CadastroProfissionais;
+import com.crea.cadastro.ManagedBean.CadastroProfissionaisListagemBean;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
 
 import static org.mockito.Mockito.*;
 
