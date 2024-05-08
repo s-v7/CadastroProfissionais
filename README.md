@@ -16,8 +16,8 @@ Utilizei JUnit como framework de teste e o Mockito para criar mocks e simular o 
 #### Estrutura do Projeto:
 - **src/main/java/com/crea/cadastro Contém o código-fonte do projeto.**
 - **src/main/sql Contém scripts sql.**
-- **test/java/com/crea/cadastro: Contém os testes unitários escritos com JUnit e Mockito.**
-
+- **src/test/java/com/crea/cadastro: Contém os testes unitários escritos com JUnit e Mockito.**
+- **docs-swagger/swagger.yml Documentação da API de cadastro de profissionais.**
 #### Clone o repositório para o seu ambiente local:
 ```bash
 git clone https://github.com/s-v7/CadastroProfissionais
