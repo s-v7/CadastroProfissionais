@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.Models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
