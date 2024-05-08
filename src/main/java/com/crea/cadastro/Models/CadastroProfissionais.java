@@ -1,4 +1,4 @@
-
+package com.crea.cadastro.Models;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
