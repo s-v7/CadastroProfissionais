@@ -4,6 +4,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
+import com.crea.cadastro.Models.CadastroProfissionais;
+import com.crea.cadastro.Models.CadastroProfissionaisTitulo;
 
 @ManagedBean
 @ViewScoped
