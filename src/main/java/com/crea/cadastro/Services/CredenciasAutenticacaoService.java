@@ -1,5 +1,6 @@
 
 import javax.naming.AuthenticationException;
+import com.crea.cadastro..Repositorys.CadastroProfissionaisRepository;
 
 
 @Service
