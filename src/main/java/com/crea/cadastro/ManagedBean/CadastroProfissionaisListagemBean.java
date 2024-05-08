@@ -1,13 +1,15 @@
 
+import javax.inject.Named;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import com.crea.cadastro.Services.CadastroProfissionaisService;
+import com.crea.cadastro.Models.CadastroProfissionais;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.stereotype.Component;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
-import java.util.List;
 
 @ManagedBean
 @ViewScoped
