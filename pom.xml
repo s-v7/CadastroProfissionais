@@ -65,15 +65,30 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-data-rest</artifactId>
+            <version>1.7.0</version> <!-- 1.6.4 -->
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
             <version>3.1.11</version>
             <type>jar</type>
         </dependency>
+         
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
+        </dependency>
+         <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -149,6 +164,26 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${version}</version>
+                <executions>
+                  <execution>
+                           <id>integration-test</id>
+                           <goals>
+                                    <goal>generate</goal>
+                           </goals>
+                  </execution>
+                </executions>
+                <configuration>
+                  <apiDocsUrl>
+                           http://localhost:8080/v3/api-docs
+                  </apiDocsUrl>
+                  <outputFileName>openapi.json</outputFileName>
+                  <outputDir>/home/springdoc/output-folder</outputDir>
+                  <skip>false</skip>
+                  <headers>
+                           <header1-key>header1-value</header1-key>
+                  </headers>
+                </configuration>
             </plugin>
         </plugins>
     </build>
