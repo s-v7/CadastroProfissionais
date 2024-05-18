@@ -1,44 +1,129 @@
-openapi: 3.0.3
-info:
-  title: Cadastro de Profissionais API
-  description: Documentação da API de cadastro de profissionais CREA/PI
-  version: 1.0.0
+openapi: 3.0.0
 servers:
-  - url: /api/cadastro
-    description: Development server
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/SVASCONCELOSCRUZ7/CadastroProfissionais/1.0.0
+info:
+  description: Cadastro e Ativação de Profissionais
+  version: "0.0.1"
+  title: Cadastro Profissionais CREA PI API
+  contact:
+    email: svasconceloscruz7@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: admins
+    description: Secured Admin-only calls
+  - name: developers
+    description: Operations available to regular developers
+    
 paths:
-  /:
+  /api/cadastro:
     get:
+      tags:
+        - developers
       summary: Buscar todos os Profissionais Cadastrados
-      description: Retorna uma lista de todos os profissionais cadastrados no sistema.
+      operationId: searchInventory
+      description: |
+        Retorna uma lista de todos os profissionais cadastrados no sistema
+      parameters:
+        - in: query
+          name: id
+          description: Identificador Único
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: tipoCadastro
+          description: (VISTO ou REGISTRO)
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: nome
+          description: Nome do profissional
+          schema:
+            type: string
+            minimum: 12
+        - in: query
+          name: cpf
+          description: CPF do profissional
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 14
+        - in: query
+          name: email
+          description: Email do profissional
+          schema:
+            type: string
+            minimum: 12
+        - in: query
+          name: password
+          description: Senha do profissional
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 1
+        - in: query
+          name: dataNascimento
+          description: Data de nascimento do profissional
+          schema:
+            type: string
+            minimum: 12
+        - in: query
+          name: telefone
+          description: Telefone do profissional
+          schema:
+            type: string
+            minimum: 12
+        - in: query
+          name: titulos
+          description: Títulos do profissional
+          schema:
+            type: string
+            minimum: 12
       responses:
         '200':
-          description: OK
+          description: search results matching criteria
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/CadastroProfissionais'
+        '400':
+          description: bad input parameter
+
     post:
+      tags:
+        - developers
       summary: Cadastrar Novo Profissional
+      operationId: addInventory
       description: Cadastra um novo profissional no sistema.
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CadastroProfissionais'
+        description: Inventory item to add
+        required: true
       responses:
         '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CadastroProfissionais'
-  /{id}:
+          description: item created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: an existing item already exists
+
+  /api/cadastro/{id}:
     get:
+      tags:
+        - developers
       summary: Buscar um Profissional Cadastrado
+      operationId: getCadastroProfissionalById
       description: Retorna um profissional com base no ID fornecido.
       parameters:
         - in: path
@@ -54,9 +139,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CadastroProfissionais'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Professional not found
+
     put:
+      tags:
+        - developers
       summary: Atualizar um Profissional Cadastrado
-      description: Atualiza as informações de um profissional existente.
+      operationId: updateInventory
+      description: Atualiza as informações de um profissional cadastrado no sistema.
       parameters:
         - in: path
           name: id
@@ -65,21 +158,26 @@ paths:
           schema:
             type: integer
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CadastroProfissionais'
+        description: Inventory item to update
+        required: true
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CadastroProfissionais'
+          description: item updated
+        '400':
+          description: 'invalid input, object invalid'
+        '404':
+          description: 'item not found'
+
     delete:
+      tags:
+        - developers
       summary: Deletar um Profissional Cadastrado
-      description: Exclui um profissional do sistema com base no ID fornecido.
+      operationId: deleteInventory
+      description: Deleta um profissional cadastrado no sistema.
       parameters:
         - in: path
           name: id
@@ -89,28 +187,61 @@ paths:
             type: integer
       responses:
         '200':
-          description: OK
+          description: Successfully deleted
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Professional not found
+
 components:
   schemas:
     CadastroProfissionais:
       type: object
+      required:
+        - id
+        - tipoCadastro
+        - name
+        - cpf
+        - email
+        - password
+        - dataNascimento
+        - telefone
       properties:
         id:
           type: integer
+          example: 701748f0851
         tipoCadastro:
           type: string
-        nome:
+          example: visto
+        name:
           type: string
+          example: Silas Vasconcelos
         cpf:
           type: string
+          example: 000-000-000-xy
         email:
           type: string
+          example: xyzt@example.com
         password:
           type: string
+          example: uywetuyuewt
         dataNascimento:
           type: string
           format: date
+          example: '2024-05-18'
         telefone:
           type: string
+          example: xx-xxxxx-yyyy
+        titulos:
+          $ref: '#/components/schemas/Titulos'
+    Titulos:
+      type: object
+      required:
+        - titulos
+      properties:
+        id:
+          type: integer
+          example: 0100777
         titulos:
           type: string
+          example: "Doutorado em Matemática, Mestrado em Computação"
