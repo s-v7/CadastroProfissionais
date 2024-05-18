@@ -5,7 +5,7 @@ servers:
 info:
   description: Cadastro e Ativação de Profissionais
   version: "0.0.1"
-  title: Cadastro Profissionais CREA PI API
+  title: Cadastro Profissionais [ffhfhdhyfyg] PI API
   contact:
     email: svasconceloscruz7@gmail.com
   license:
@@ -13,9 +13,9 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 tags:
   - name: admins
-    description: Secured Admin-only calls
+    description: Chamadas seguras apenas para administradores
   - name: developers
-    description: Operations available to regular developers
+    description: Operações disponíveis para desenvolvedores regulares
     
 paths:
   /api/cadastro:
@@ -23,7 +23,7 @@ paths:
       tags:
         - developers
       summary: Buscar todos os Profissionais Cadastrados
-      operationId: searchInventory
+      operationId: getAllProfissionais
       description: |
         Retorna uma lista de todos os profissionais cadastrados no sistema
       parameters:
@@ -71,8 +71,7 @@ paths:
           name: dataNascimento
           description: Data de nascimento do profissional
           schema:
-            type: string
-            minimum: 12
+            type: date
         - in: query
           name: telefone
           description: Telefone do profissional
@@ -101,7 +100,7 @@ paths:
       tags:
         - developers
       summary: Cadastrar Novo Profissional
-      operationId: addInventory
+      operationId: createProfissional
       description: Cadastra um novo profissional no sistema.
       requestBody:
         content:
@@ -123,7 +122,7 @@ paths:
       tags:
         - developers
       summary: Buscar um Profissional Cadastrado
-      operationId: getCadastroProfissionalById
+      operationId:  getProfissionalById
       description: Retorna um profissional com base no ID fornecido.
       parameters:
         - in: path
@@ -148,7 +147,7 @@ paths:
       tags:
         - developers
       summary: Atualizar um Profissional Cadastrado
-      operationId: updateInventory
+      operationId: updateProfissional
       description: Atualiza as informações de um profissional cadastrado no sistema.
       parameters:
         - in: path
@@ -206,6 +205,7 @@ components:
         - password
         - dataNascimento
         - telefone
+        - titulos
       properties:
         id:
           type: integer
@@ -244,4 +244,4 @@ components:
           example: 0100777
         titulos:
           type: string
-          example: "Doutorado em Matemática, Mestrado em Computação"
+          example: "Bacharelado Engenharia Elétrica, Mestrado em Computação, Doutorado em Computação"
