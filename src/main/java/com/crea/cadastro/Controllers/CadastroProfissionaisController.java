@@ -52,7 +52,8 @@ public class CadastroProfissionaisController {
         return ResponseEntity.status (HttpStatus.CREATED).body(createdProfissional);
     }
 
-    @ApiOperation(value = "Atualizar um Profissional Cadastrado", notes = "Atualiza as informações de um profissional existente.")@PutMapping("/{id}")
+    @ApiOperation(value = "Atualizar um Profissional Cadastrado", notes = "Atualiza as informações de um profissional existente.")
+    @PutMapping("/{id}")
     public ResponseEntity<CadastroProfissionais> updateProfissional(@ApiParam(value = "ID do Profissional", required = true)@PathVariable int id,
                                                                 @ApiParam(value = "Profissional Atualizado", required = true)
                                                                 @RequestBody CadastroProfissionais updatedProfissional) {
